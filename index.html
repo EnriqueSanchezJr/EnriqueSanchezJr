@@ -131,6 +131,41 @@
     body.dark a {
       color: #ff8080;
     }
+
+    /* Header background image and overlay */
+    header {
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url('Header Background Imge.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: grayscale(100%);
+      z-index: 0;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(255, 255, 255, 0.6);
+      z-index: 1;
+    }
+
+    body.dark header::before {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    header > * {
+      position: relative;
+      z-index: 2;
+    }
   </style>
 </head>
 <body>
