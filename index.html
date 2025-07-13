@@ -5,8 +5,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My Portfolio</title>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Page Styles -->
   <style>
-    /* [STYLES UNCHANGED FROM TEMPLATE FOR BREVITY] */
+    /* Basic aesthetic styling */
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header, nav, section, footer {
+      padding: 1rem 2rem;
+    }
+
+    nav a {
+      margin-right: 1rem;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .card {
+      background: #fff;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: #0077cc;
+      color: white;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+
+    .contact-box a {
+      color: #0077cc;
+    }
+
+    /* Dark mode */
+    body.dark {
+      background: #121212;
+      color: #eee;
+    }
+
+    body.dark .card {
+      background: #1e1e1e;
+      color: #eee;
+    }
   </style>
 </head>
 <body>
@@ -18,20 +70,25 @@
   });
 </script>
 
+<!-- Theme toggle for light/dark mode -->
 <button id="theme-toggle">Toggle Dark Mode</button>
 
+<!-- Header Section -->
 <header data-aos="fade-down" data-aos-duration="1200">
-  <h1 data-aos="fade-down" data-aos-delay="100">Your Name</h1>
+  <h1 data-aos="fade-down" data-aos-delay="100">Enrique Sanchez Jr.</h1>
   <img
     src="placeholder.jpg"
-    alt="Placeholder headshot"
+    alt="Enrique headshot"
     style="width:120px;border-radius:50%;margin-top:1rem;"
     data-aos="zoom-in"
     data-aos-delay="300"
   />
-  <p data-aos="fade-up" data-aos-delay="500">Brief tagline goes here.</p>
+  <p data-aos="fade-up" data-aos-delay="500">
+    Mechanical Engineer | U.S. Marine Corps Veteran | UAS Systems Lead
+  </p>
 </header>
 
+<!-- Navigation -->
 <nav>
   <a href="#about">About</a>
   <a href="#projects">Projects</a>
@@ -39,63 +96,123 @@
   <a href="#contact">Contact</a>
 </nav>
 
+<!-- About Section -->
 <section id="about" class="card">
   <h2>About</h2>
-  <p>Introduce yourself here.</p>
+  <p>
+    I’m a U.S. Marine Corps veteran turned mechanical engineer focused on
+    robotics, UAVs and sustainable energy systems. I enjoy bridging
+    leadership with hands-on engineering in simulation, design and aerospace
+    applications.
+  </p>
 </section>
 
+<!-- My Story Section -->
 <section id="mystory" class="card">
   <h2>My Story</h2>
-  <p>Share your background.</p>
+  <p>
+    After six years as a Marine Corps sergeant, I pursued mechanical
+    engineering at California State University, Long Beach. My projects range
+    from developing group 2 UAS drones to optimizing axial flux motors and
+    working on NASA Lunabotics. I graduate in December 2024 and begin my M.S.
+    in Spring 2025.
+  </p>
 </section>
 
+<!-- Timeline Section -->
 <section id="timeline-graphic" class="card">
   <h2>Timeline</h2>
   <div class="timeline-v2">
     <div class="timeline-v2-item left" data-aos="fade-right">
       <div class="content">
-        <img src="placeholder.jpg" alt="Year">
+        <img src="placeholder.jpg" alt="2014-2020">
         <div class="text-block">
-          <h3>Year</h3>
-          <h4>Event</h4>
-          <p>Description.</p>
+          <h3>2014–2020</h3>
+          <h4>U.S. Marine Corps Sergeant</h4>
+          <p>Led operations and logistics.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-v2-item right" data-aos="fade-left">
+      <div class="content">
+        <img src="placeholder.jpg" alt="2022-2023">
+        <div class="text-block">
+          <h3>2022–2023</h3>
+          <h4>NASA Lunabotics Team</h4>
+          <p>Mechanical design & manufacturing.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-v2-item left" data-aos="fade-right">
+      <div class="content">
+        <img src="placeholder.jpg" alt="Summer 2024">
+        <div class="text-block">
+          <h3>Summer 2024</h3>
+          <h4>Zimmer Biomet Robotics Internship</h4>
+          <p>Robotics & simulation exposure.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-v2-item right" data-aos="fade-left">
+      <div class="content">
+        <img src="placeholder.jpg" alt="2025">
+        <div class="text-block">
+          <h3>2025</h3>
+          <h4>Starting M.S. in Mechanical Engineering</h4>
+          <p>Graduate studies begin Spring 2025.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- Projects Section -->
 <section id="projects">
   <h2>Projects</h2>
   <div class="card">
-    <h3>Project Title</h3>
-    <p>Project description.</p>
+    <h3>HAVOC-3 UAS</h3>
+    <p>Full-cycle drone designed and prototyped from scratch.</p>
+  </div>
+  <div class="card">
+    <h3>Axial Flux Motor</h3>
+    <p>Custom electric motor with thermal and structural optimization.</p>
+  </div>
+  <div class="card">
+    <h3>Offshore Wind Turbine Capstone</h3>
+    <p>Marine structure design with CFD/FEA analysis.</p>
   </div>
 </section>
 
+<!-- Resume Section -->
 <section id="resume" class="card">
   <h2>Resume</h2>
-  <p>Provide your resume link here.</p>
+  <p>View my complete resume below.</p>
   <a href="resume.pdf" target="_blank" class="button">Download Resume (PDF)</a>
 </section>
 
+<!-- Contact Section -->
 <section id="contact" class="card contact-box" data-aos="fade-up">
   <h2 data-aos="fade-up" data-aos-delay="100">Contact</h2>
   <p data-aos="fade-up" data-aos-delay="200">
-    Email: <a href="mailto:your.email@example.com">your.email@example.com</a>
+    Email: <a href="mailto:enrique@example.com">enrique@example.com</a>
   </p>
   <p data-aos="fade-up" data-aos-delay="300">
-    Phone: <a href="tel:+10000000000">Phone Number</a>
+    Phone: <a href="tel:+10000000000">+1 (000) 000-0000</a>
   </p>
   <p data-aos="fade-up" data-aos-delay="400">
     LinkedIn: <a href="https://linkedin.com/" target="_blank">LinkedIn Profile</a>
   </p>
 </section>
 
+<!-- Footer -->
 <footer>
-  <p>&copy; 2025 Your Name | Thanks for visiting!</p>
+  <p>&copy; 2025 Enrique Sanchez Jr. | Thanks for visiting!</p>
 </footer>
 
+<!-- Scripts -->
 <script>
   const toggle = document.getElementById("theme-toggle");
   toggle.addEventListener("click", () => {

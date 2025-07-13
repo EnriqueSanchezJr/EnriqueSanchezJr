@@ -1,2 +1,2 @@
-Simple portfolio skeleton with placeholder content.
-Customize sections in index.html to build your own site.
+Personal portfolio site for Enrique Sanchez Jr.
+All main details can be edited in index.html.
