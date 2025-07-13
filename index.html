@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My Portfolio</title>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <!-- Page Styles -->
   <style>
     /* Basic aesthetic styling */
@@ -16,7 +17,7 @@
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Roboto', Arial, Helvetica, sans-serif;
       margin: 0;
       padding: 0;
       background: var(--light-bg);
@@ -49,7 +50,7 @@
       padding: 0.5rem 1rem;
       background: var(--accent);
       color: white;
-      border-radius: 4px;
+      border-radius: 20px;
       text-decoration: none;
     }
 
@@ -76,6 +77,20 @@
 
     .contact-row p {
       margin: 0;
+    }
+
+    .pdf-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .pdf-container iframe {
+      width: 100%;
+      height: 80vh;
+      border: none;
     }
 
     #theme-toggle {
@@ -270,7 +285,9 @@
 <section id="resume" class="card">
   <h2>Resume</h2>
   <p>View my complete resume below.</p>
-  <a href="resume.pdf" target="_blank" class="button">Download Resume (PDF)</a>
+  <div class="pdf-container">
+    <iframe id="resume-viewer" title="Resume PDF"></iframe>
+  </div>
 </section>
 
 <!-- Contact Section -->
@@ -329,6 +346,12 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.card').forEach(el => observer.observe(el));
+
+  const viewer = document.getElementById('resume-viewer');
+  const pdfPath = encodeURIComponent('Engineering Resume - Enrique Sanchez Jr.pdf');
+  const base = 'https://mozilla.github.io/pdf.js/web/viewer.html?file=';
+  const origin = window.location.origin + window.location.pathname.replace(/index\.html$/, '');
+  viewer.src = `${base}${origin}${pdfPath}#zoom=90`;
 </script>
 
 </body>
