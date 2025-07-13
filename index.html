@@ -302,33 +302,38 @@
 
 <!-- Scripts -->
 <script>
-  const toggle = document.getElementById("theme-toggle");
-  function updateToggleText(isDark) {
-    toggle.textContent = isDark ? "Switch to Light Mode" : "Switch to Dark Mode";
-  }
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggle = document.getElementById('theme-toggle');
 
-  const saved = localStorage.getItem("theme") || "light";
-  if (saved === "dark") {
-    document.body.classList.add("dark");
-  }
-  updateToggleText(saved === "dark");
+    function updateToggleText(isDark) {
+      toggle.textContent = isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+    }
 
-  toggle.addEventListener("click", () => {
-    const isDark = document.body.classList.toggle("dark");
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-    updateToggleText(isDark);
-  });
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add("visible");
-        }, index * 150);
-        observer.unobserve(entry.target);
-      }
+    const saved = localStorage.getItem('theme') || 'light';
+    if (saved === 'dark') {
+      document.body.classList.add('dark');
+    }
+    updateToggleText(saved === 'dark');
+
+    toggle.addEventListener('click', () => {
+      const isDark = document.body.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      updateToggleText(isDark);
     });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.card').forEach(el => observer.observe(el));
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 150);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.card').forEach((el) => observer.observe(el));
+  });
 </script>
 
 </body>
