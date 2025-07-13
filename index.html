@@ -78,6 +78,30 @@
       margin: 0;
     }
 
+    #theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      border: none;
+      border-radius: 20px;
+      padding: 0.4rem 1rem;
+      background: #fff;
+      color: var(--accent);
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    #theme-toggle:hover {
+      transform: scale(1.05);
+    }
+
+    body.dark #theme-toggle {
+      background: var(--dark-card);
+      color: #ff8080;
+    }
+
     /* Dark mode */
     body.dark {
       background: var(--dark-bg);
@@ -112,12 +136,12 @@
   <img
     src="HeadShot.png"
     alt="Enrique headshot"
-    style="width:120px;border-radius:50%;margin:1rem auto;display:block;"
+    style="width:240px;border-radius:50%;margin:1rem auto;display:block;"
     data-aos="zoom-in"
     data-aos-delay="300"
   />
   <p data-aos="fade-up" data-aos-delay="500">
-    Mechanical Engineer | U.S. Marine Corps Veteran | UAS Systems Lead
+    Mechanical Engineer | UAS & Robotics & Axial Flux Motors | U.S. Marine Corps Veteran
   </p>
 </header>
 
