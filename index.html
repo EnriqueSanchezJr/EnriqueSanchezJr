@@ -110,7 +110,7 @@
 <!-- My Story Section -->
 <section id="mystory" class="card">
   <h2>My Story</h2>
- codex/review-my-code
+
   <p>
     After six years as a Marine Corps sergeant, I pursued mechanical
     engineering at California State University, Long Beach. My projects range
@@ -199,13 +199,17 @@
 <section id="contact" class="card contact-box" data-aos="fade-up">
   <h2 data-aos="fade-up" data-aos-delay="100">Contact</h2>
   <p data-aos="fade-up" data-aos-delay="200">
-    Email: <a href="mailto:enrique@example.com">enrique@example.com</a>
+
+    Email: <a href="mailto:sanchez.enrique325@yahoo.com">sanchez.enrique325@yahoo.com</a>
   </p>
   <p data-aos="fade-up" data-aos-delay="300">
-    Phone: <a href="tel:+10000000000">+1 (000) 000-0000</a>
+    Phone: <a href="tel:+16265131984">+1 (626) 513-1984</a>
   </p>
   <p data-aos="fade-up" data-aos-delay="400">
-    LinkedIn: <a href="https://linkedin.com/" target="_blank">LinkedIn Profile</a>
+    LinkedIn:
+    <a href="https://www.linkedin.com/in/sanchez-robotics" target="_blank"
+      >linkedin.com/in/sanchez-robotics</a
+
   </p>
 </section>
 
@@ -217,13 +221,14 @@
 <!-- Scripts -->
 <script>
   const toggle = document.getElementById("theme-toggle");
-  toggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-    localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
-  });
-  if (localStorage.getItem("theme") === "dark") {
+  const saved = localStorage.getItem("theme") || "light";
+  if (saved === "dark") {
     document.body.classList.add("dark");
   }
+  toggle.addEventListener("click", () => {
+    const isDark = document.body.classList.toggle("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  });
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, index) => {
       if (entry.isIntersecting) {
