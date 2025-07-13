@@ -8,23 +8,31 @@
   <!-- Page Styles -->
   <style>
     /* Basic aesthetic styling */
+    :root {
+      --accent: #b30000;
+      --light-bg: #fff5f5;
+      --dark-bg: #330000;
+      --dark-card: #450000;
+    }
+
     body {
       font-family: Arial, Helvetica, sans-serif;
       margin: 0;
       padding: 0;
-      background: #f4f4f4;
+      background: var(--light-bg);
       color: #333;
       line-height: 1.6;
     }
 
     header, nav, section, footer {
       padding: 1rem 2rem;
+      text-align: center;
     }
 
     nav a {
-      margin-right: 1rem;
+      margin: 0 1rem;
       text-decoration: none;
-      color: #333;
+      color: var(--accent);
     }
 
     .card {
@@ -39,25 +47,50 @@
       display: inline-block;
       margin-top: 0.5rem;
       padding: 0.5rem 1rem;
-      background: #0077cc;
+      background: var(--accent);
       color: white;
       border-radius: 4px;
       text-decoration: none;
     }
 
     .contact-box a {
-      color: #0077cc;
+      color: var(--accent);
+    }
+
+    .footer-contact a {
+      color: var(--accent);
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+
+    .footer-contact {
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-row {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-row p {
+      margin: 0;
     }
 
     /* Dark mode */
     body.dark {
-      background: #121212;
+      background: var(--dark-bg);
       color: #eee;
     }
 
     body.dark .card {
-      background: #1e1e1e;
+      background: var(--dark-card);
       color: #eee;
+    }
+
+    body.dark a {
+      color: #ff8080;
     }
   </style>
 </head>
@@ -71,15 +104,15 @@
 </script>
 
 <!-- Theme toggle for light/dark mode -->
-<button id="theme-toggle">Toggle Dark Mode</button>
+<button id="theme-toggle">Switch to Dark Mode</button>
 
 <!-- Header Section -->
 <header data-aos="fade-down" data-aos-duration="1200">
   <h1 data-aos="fade-down" data-aos-delay="100">Enrique Sanchez Jr.</h1>
   <img
-    src="placeholder.jpg"
+    src="HeadShot.png"
     alt="Enrique headshot"
-    style="width:120px;border-radius:50%;margin-top:1rem;"
+    style="width:120px;border-radius:50%;margin:1rem auto;display:block;"
     data-aos="zoom-in"
     data-aos-delay="300"
   />
@@ -198,36 +231,54 @@
 <!-- Contact Section -->
 <section id="contact" class="card contact-box" data-aos="fade-up">
   <h2 data-aos="fade-up" data-aos-delay="100">Contact</h2>
-  <p data-aos="fade-up" data-aos-delay="200">
-
-    Email: <a href="mailto:sanchez.enrique325@yahoo.com">sanchez.enrique325@yahoo.com</a>
-  </p>
-  <p data-aos="fade-up" data-aos-delay="300">
-    Phone: <a href="tel:+16265131984">+1 (626) 513-1984</a>
-  </p>
-  <p data-aos="fade-up" data-aos-delay="400">
-    LinkedIn:
-    <a href="https://www.linkedin.com/in/sanchez-robotics" target="_blank"
-      >linkedin.com/in/sanchez-robotics</a
-
-  </p>
+  <div class="contact-row">
+    <p data-aos="fade-up" data-aos-delay="200">
+      Email:
+      <a href="mailto:sanchez.enrique325@yahoo.com">sanchez.enrique325@yahoo.com</a>
+    </p>
+    <p data-aos="fade-up" data-aos-delay="300">
+      Phone: <a href="tel:+16265131984">+1 (626) 513-1984</a>
+    </p>
+    <p data-aos="fade-up" data-aos-delay="400">
+      LinkedIn:
+      <a href="https://www.linkedin.com/in/sanchez-robotics" target="_blank"
+        >linkedin.com/in/sanchez-robotics</a
+      >
+    </p>
+  </div>
 </section>
 
 <!-- Footer -->
 <footer>
-  <p>&copy; 2025 Enrique Sanchez Jr. | Thanks for visiting!</p>
+  <div class="footer-contact">
+    <a href="mailto:sanchez.enrique325@yahoo.com">sanchez.enrique325@yahoo.com</a>
+    |
+    <a href="tel:+16265131984">+1 (626) 513-1984</a>
+    |
+    <a href="https://www.linkedin.com/in/sanchez-robotics" target="_blank">linkedin.com/in/sanchez-robotics</a>
+  </div>
+  <p>|⚙️ Driven by Innovation | 🚀 Powered by Purpose | Built by Enrique |<br />
+    I appreciate our time!</p>
+  <p>&copy; 2025 Enrique Sanchez Jr.</p>
 </footer>
 
 <!-- Scripts -->
 <script>
   const toggle = document.getElementById("theme-toggle");
+  function updateToggleText(isDark) {
+    toggle.textContent = isDark ? "Switch to Light Mode" : "Switch to Dark Mode";
+  }
+
   const saved = localStorage.getItem("theme") || "light";
   if (saved === "dark") {
     document.body.classList.add("dark");
   }
+  updateToggleText(saved === "dark");
+
   toggle.addEventListener("click", () => {
     const isDark = document.body.classList.toggle("dark");
     localStorage.setItem("theme", isDark ? "dark" : "light");
+    updateToggleText(isDark);
   });
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, index) => {
