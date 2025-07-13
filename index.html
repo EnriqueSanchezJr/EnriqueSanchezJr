@@ -167,6 +167,12 @@
       position: relative;
       z-index: 2;
     }
+
+    #typewriter {
+      border-right: 2px solid var(--accent);
+      padding-right: 4px;
+      white-space: nowrap;
+    }
   </style>
 </head>
 <body>
@@ -191,8 +197,8 @@
     data-aos="zoom-in"
     data-aos-delay="300"
   />
-  <p data-aos="fade-up" data-aos-delay="500">
-    Mechanical Engineer | UAS & Robotics & Axial Flux Motors | U.S. Marine Corps Veteran
+  <p data-aos="fade-up" data-aos-delay="500" class="intro">
+    I am a <span id="typewriter"></span>
   </p>
 </header>
 
@@ -388,6 +394,42 @@
   const base = 'https://mozilla.github.io/pdf.js/web/viewer.html?file=';
   const origin = window.location.origin + window.location.pathname.replace(/index\.html$/, '');
   viewer.src = `${base}${origin}${pdfPath}#zoom=90`;
+
+  const typeEl = document.getElementById('typewriter');
+  const titles = [
+    'Mechanical Engineer',
+    'Marine Corps Veteran',
+    'Axial Flux Motor Designer',
+    'CFD/FEA Analyst',
+    'UAS Drone Engineer'
+  ];
+  let titleIdx = 0;
+  let charIdx = 0;
+  let deleting = false;
+
+  function typeLoop() {
+    const current = titles[titleIdx];
+    if (deleting) {
+      typeEl.textContent = current.substring(0, charIdx--);
+    } else {
+      typeEl.textContent = current.substring(0, charIdx++);
+    }
+
+    let delay = deleting ? 50 : 100;
+
+    if (!deleting && charIdx === current.length + 1) {
+      delay = 1500;
+      deleting = true;
+    } else if (deleting && charIdx === 0) {
+      deleting = false;
+      titleIdx = (titleIdx + 1) % titles.length;
+      delay = 500;
+    }
+
+    setTimeout(typeLoop, delay);
+  }
+
+  typeLoop();
 </script>
 
 </body>
